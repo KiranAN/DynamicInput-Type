@@ -1,3 +1,3 @@
-# directives
+# Dynamic Input-Type
 
-Choose html input type to dynamically based on the response
+Dynamically choose html input type to  based on the response
