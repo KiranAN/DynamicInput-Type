@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		Type Directive
+	</head>
+	<body ng-controller="myController">
+		<type ctrlid={{value}}></type>
+		<select ng-change="onSelect(value)" ng-model="value">
+			<option value="1">Text</option>
+			<option value="5">Checkbox</option>
+			<option value="3">Radio</option>
+		</select>
+		<script src="js/angular.js"></script>
+		<script src="js/app.js"></script>
+	</body>
+</html>
