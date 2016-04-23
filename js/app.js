@@ -10,7 +10,11 @@ app.controller('myController', ['$scope','util',function($scope,util){
 		{displayText: 'SingleSelectDropdown', value: $scope.controlType.SingleSelectDropdown},
 		{displayText: 'MultiSelectDropDown', value: $scope.controlType.MultiSelectDropDown},
 		{displayText: 'CheckBox', value: $scope.controlType.CheckBox}
-	]
+	];
+
+	$scope.typeSelected = function(val){
+		$scope.value = val;
+	}
 }]);
 app.service('util', function(){
 	return{
@@ -32,29 +36,29 @@ app.directive('type',function(){
 		restrict:'E',
 		template:"<input type='text' />",
 		link: function(scope, element, attrs){			
-			scope.$watch('value',function(newValue, oldValue){
-				if(newValue != oldValue)
+			scope.$watch('value',function(newObj, oldObj){
+				if(newObj != oldObj)
 					identifyType();
 			});
 			function identifyType(){
 				switch(parseInt(attrs.ctrlid)){
 					case scope.controlType.TextBox:
-						element.replaceWith("<input type='text' />");
+						element[0].innerHTML="<input type='text' />";
 						break;
 					case scope.controlType.TextArea:
-						element.replaceWith("<input type='textarea' />");
+						element[0].innerHTML="<textarea/>";
 						break;
 					case scope.controlType.RadioButton:
-						element.replaceWith("<input type='radio' />");
+						element[0].innerHTML="<input type='radio' />";
 						break;
 					case scope.controlType.SingleSelectDropdown:
-						element.replaceWith("<select></select>");
+						element[0].innerHTML="<select></select>";
 						break;
 					case scope.controlType.MultiSelectDropDown:
-						element.replaceWith("<select></select>");
+						element[0].innerHTML="<select></select>";
 						break;
 					case scope.controlType.CheckBox:
-						element.replaceWith("<input type='checkbox' />");
+						element[0].innerHTML="<input type='checkbox' />";
 						break;
 				}
 			}
