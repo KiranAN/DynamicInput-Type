@@ -4,10 +4,11 @@
 		Dynamic Type
 	</head>
 	<body ng-controller="myController">
-		<label>Choose Input Type from dropdown</label>
+		<label>Select from dropdown</label>
 		<select ng-options="type.displayText for type in controlTypes" ng-model="type" ng-change="typeSelected(type.value)">
 			<option value="type.value"></option>
 		</select>
+		<label> Input type</label>
 		<type ctrlid={{value}}></type>
 		<script src="js/angular.js"></script>
 		<script src="js/app.js"></script>
