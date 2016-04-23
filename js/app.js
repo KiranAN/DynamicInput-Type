@@ -1,17 +1,23 @@
 var app = angular.module('app',[]);
-app.controller('myController', ['$scope',function($scope){
-	$scope.controlType = {
-			TextBox : 1,
-			TextArea : 2,
-			RadioButton : 3,
-			SingleSelectDropdown : 4,
-			MultiSelectDropDown : 5,
-			CheckBox : 6			
-	}
-
-	$scope.controls = [1,2,3,4,5,6];
-	$scope.value = $scope.controlType.CheckBox;	
+app.controller('myController', ['$scope','util',function($scope,util){
+	$scope.controlType = util.getControlTypes();
+	$scope.value = $scope.controlType.TextBox;	
 }]);
+app.service('util', function(){
+	return{
+		getControlTypes:function(){
+			var controlType = {
+				TextBox : 1,
+				TextArea : 2,
+				RadioButton : 3,
+				SingleSelectDropdown : 4,
+				MultiSelectDropDown : 5,
+				CheckBox : 6
+			}
+			return controlType;
+		}
+	}
+})
 app.directive('type',function(){
 	return{
 		restrict:'E',
