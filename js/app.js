@@ -1,7 +1,17 @@
 var app = angular.module('app',[]);
 app.controller('myController', ['$scope','util',function($scope,util){
 	$scope.controlType = util.getControlTypes();
-	$scope.value = $scope.controlType.TextBox;	
+
+	$scope.value = $scope.controlType.TextBox;
+
+	$scope.controlTypes = [
+		{displayText: 'TextBox', value:$scope.controlType.TextBox},
+		{displayText: 'TextArea', value : $scope.controlType.TextArea},
+		{displayText: 'RadioButton', value: $scope.controlType.RadioButton},
+		{displayText: 'SingleSelectDropdown', value: $scope.controlType.SingleSelectDropdown},
+		{displayText: 'MultiSelectDropDown', value: $scope.controlType.MultiSelectDropDown},
+		{displayText: 'CheckBox', value: $scope.controlType.CheckBox}
+	]
 }]);
 app.service('util', function(){
 	return{
