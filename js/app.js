@@ -10,7 +10,7 @@ app.controller('myController', ['$scope',function($scope){
 	}
 
 	$scope.controls = [1,2,3,4,5,6];
-	$scope.value =6;	
+	$scope.value = $scope.controlType.CheckBox;	
 }]);
 app.directive('type',function(){
 	return{
