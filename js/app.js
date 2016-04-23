@@ -1,9 +1,8 @@
 var app = angular.module('app',[]);
 app.controller('myController', ['$scope','util',function($scope,util){
 	$scope.controlType = util.getControlTypes();
-
-	$scope.value = $scope.controlType.TextBox;
-
+	$scope.value = $scope.controlType.CheckBox;
+	
 	$scope.controlTypes = [
 		{displayText: 'TextBox', value:$scope.controlType.TextBox},
 		{displayText: 'TextArea', value : $scope.controlType.TextArea},
@@ -16,7 +15,7 @@ app.controller('myController', ['$scope','util',function($scope,util){
 app.service('util', function(){
 	return{
 		getControlTypes:function(){
-			var controlType = {
+			var typeEnum = {
 				TextBox : 1,
 				TextArea : 2,
 				RadioButton : 3,
@@ -24,15 +23,19 @@ app.service('util', function(){
 				MultiSelectDropDown : 5,
 				CheckBox : 6
 			}
-			return controlType;
+			return typeEnum;
 		}
 	}
 })
 app.directive('type',function(){
 	return{
 		restrict:'E',
-		template:"<input type='' />",
-		link: function(scope, element, attrs){						
+		template:"<input type='text' />",
+		link: function(scope, element, attrs){			
+			scope.$watch('value',function(newValue, oldValue){
+				if(newValue != oldValue)
+					identifyType();
+			});
 			function identifyType(){
 				switch(parseInt(attrs.ctrlid)){
 					case scope.controlType.TextBox:

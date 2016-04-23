@@ -5,8 +5,8 @@
 	</head>
 	<body ng-controller="myController">
 		<type ctrlid={{value}}></type>
-		<select ng-options="type.displayText for type in controlTypes" ng-model="type.value">
-			
+		<select ng-options="type.displayText for type in controlTypes"  ng-model="value">
+			<option value="type.value"></option>
 		</select>
 		<script src="js/angular.js"></script>
 		<script src="js/app.js"></script>
